@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Card, CardContent, Typography, Box } from "@mui/material";
+import { waitFor } from "@testing-library/react";
 
 const data = [
   "React is a JavaScript library for building user interfaces.",
@@ -73,10 +74,18 @@ const SearchComponent = () => {
             display: "flex",
             justifyContent: "flex-start",
             width: "100%",
-            pl: "20px",
+            pl: "35px",
           }}
         >
-          <Typography variant="h4" component="h1" gutterBottom>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 500,
+              lineHeight: "32px",
+              fontSize: "32px",
+              mb: "8px",
+            }}
+          >
             Keyword Highlighter
           </Typography>
         </Box>
@@ -113,12 +122,33 @@ const SearchComponent = () => {
         />
         <Typography
           variant="body2"
-          sx={{ pl: "20px", mb: 2, textAlign: "left", width: "100%" }}
+          sx={{
+            display: "flex",
+            pl: "35px",
+            mb: 0.5,
+            textAlign: "left",
+            width: "100%",
+            mt: "8px",
+            fontWeight: 700,
+            lineHeight: "20px",
+            fontSize: "16px",
+          }}
         >
-          Occurrences: {countOccurrences()}
+          Occurrences:{" "}
+          <Typography
+            sx={{
+              ml: "5px",
+              fontWeight: 700,
+              lineHeight: "20px",
+              fontSize: "16px",
+              color: "darkred",
+            }}
+          >
+            {countOccurrences()}
+          </Typography>
         </Typography>
 
-        <Typography sx={{ textAlign: "left", width: "100%", pl: "20px" }}>
+        <Typography sx={{ textAlign: "left", width: "100%", pl: "35Px" }}>
           {data.map((item, index) => (
             <span key={index}>
               {highlightText(item)}
